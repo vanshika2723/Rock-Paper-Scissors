@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RPS Arena | Rock Paper Scissors</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">🎮</div>
+            <div>
+                <h1>RPS <span>ARENA</span></h1>
+                <p>Rock • Paper • Scissors</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button class="icon-btn" id="soundBtn" title="Toggle sound">
+                🔊
+            </button>
+
+            <button class="icon-btn" id="themeBtn" title="Toggle theme">
+                🌙
+            </button>
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="eyebrow">
+                <span class="live-dot"></span>
+                LIVE GAME
+            </div>
+
+            <h2>Beat the <span>Computer.</span></h2>
+
+            <p>
+                Choose your move, build your streak and become the
+                ultimate RPS champion.
+            </p>
+        </section>
+
+
+        <!-- Game Settings -->
+        <section class="settings-card">
+
+            <div class="setting-title">
+                <span>🎯</span>
+                <div>
+                    <h3>Game Mode</h3>
+                    <p>Choose how you want to play</p>
+                </div>
+            </div>
+
+            <div class="mode-buttons">
+
+                <button class="mode-btn active" data-mode="endless">
+                    <span>♾️</span>
+                    <strong>Endless</strong>
+                    <small>Play freely</small>
+                </button>
+
+                <button class="mode-btn" data-mode="best3">
+                    <span>🥉</span>
+                    <strong>Best of 3</strong>
+                    <small>First to 2</small>
+                </button>
+
+                <button class="mode-btn" data-mode="best5">
+                    <span>🏆</span>
+                    <strong>Best of 5</strong>
+                    <small>First to 3</small>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Score Board -->
+        <section class="scoreboard">
+
+            <div class="score-card player-score">
+                <div class="avatar">🧑‍💻</div>
+                <div class="score-info">
+                    <span>YOU</span>
+                    <strong id="playerScore">0</strong>
+                </div>
+            </div>
+
+            <div class="vs">
+                <span>ROUND</span>
+                <strong id="roundNumber">0</strong>
+                <small>VS</small>
+            </div>
+
+            <div class="score-card computer-score">
+                <div class="avatar">🤖</div>
+                <div class="score-info">
+                    <span>COMPUTER</span>
+                    <strong id="computerScore">0</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Battle Arena -->
+        <section class="battle-card">
+
+            <div class="battle-heading">
+                <span class="section-label">⚔️ BATTLE ARENA</span>
+                <span class="mode-label" id="modeLabel">ENDLESS MODE</span>
+            </div>
+
+
+            <div class="battle">
+
+                <div class="fighter">
+                    <div class="fighter-label">YOUR MOVE</div>
+
+                    <div class="choice-display" id="playerChoice">
+                        <span>❔</span>
+                    </div>
+
+                    <h3 id="playerMoveText">Choose your move</h3>
+                </div>
+
+
+                <div class="battle-vs">
+                    <div class="pulse-line"></div>
+                    <span>VS</span>
+                    <div class="pulse-line"></div>
+                </div>
+
+
+                <div class="fighter">
+                    <div class="fighter-label">COMPUTER MOVE</div>
+
+                    <div class="choice-display computer" id="computerChoice">
+                        <span>❔</span>
+                    </div>
+
+                    <h3 id="computerMoveText">Waiting...</h3>
+                </div>
+
+            </div>
+
+
+            <!-- Result -->
+            <div class="result-box" id="resultBox">
+                <div class="result-icon" id="resultIcon">🎯</div>
+
+                <div>
+                    <span class="result-small">BATTLE RESULT</span>
+                    <h2 id="resultText">Make your move!</h2>
+                    <p id="resultMessage">
+                        The computer is waiting for your challenge.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Choices -->
+            <div class="choice-section">
+
+                <div class="choice-heading">
+                    <h3>Choose your weapon</h3>
+                    <span>Press R, P or S</span>
+                </div>
+
+                <div class="choices">
+
+                    <button class="choice-btn rock" data-choice="rock">
+                        <div class="choice-icon">🪨</div>
+                        <strong>ROCK</strong>
+                        <small>Press R</small>
+                    </button>
+
+                    <button class="choice-btn paper" data-choice="paper">
+                        <div class="choice-icon">📄</div>
+                        <strong>PAPER</strong>
+                        <small>Press P</small>
+                    </button>
+
+                    <button class="choice-btn scissors" data-choice="scissors">
+                        <div class="choice-icon">✂️</div>
+                        <strong>SCISSORS</strong>
+                        <small>Press S</small>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Stats -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div>
+                    <span>WINS</span>
+                    <strong id="wins">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🤝</div>
+                <div>
+                    <span>DRAWS</span>
+                    <strong id="draws">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💥</div>
+                <div>
+                    <span>LOSSES</span>
+                    <strong id="losses">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card streak-card">
+                <div class="stat-icon">🔥</div>
+                <div>
+                    <span>CURRENT STREAK</span>
+                    <strong id="streak">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div>
+                    <span>BEST STREAK</span>
+                    <strong id="bestStreak">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🎮</div>
+                <div>
+                    <span>TOTAL GAMES</span>
+                    <strong id="totalGames">0</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Achievements -->
+        <section class="panel">
+
+            <div class="panel-header">
+                <div>
+                    <span class="section-label">🏅 ACHIEVEMENTS</span>
+                    <h2>Unlock your badges</h2>
+                </div>
+
+                <span id="achievementCount">0 / 5</span>
+            </div>
+
+            <div class="achievements">
+
+                <div class="achievement locked" id="achievement-first">
+                    <div class="achievement-icon">🥇</div>
+                    <div>
+                        <strong>First Victory</strong>
+                        <p>Win your first game</p>
+                    </div>
+                </div>
+
+                <div class="achievement locked" id="achievement-streak3">
+                    <div class="achievement-icon">🔥</div>
+                    <div>
+                        <strong>On Fire</strong>
+                        <p>Reach a 3 win streak</p>
+                    </div>
+                </div>
+
+                <div class="achievement locked" id="achievement-streak5">
+                    <div class="achievement-icon">⚡</div>
+                    <div>
+                        <strong>Unstoppable</strong>
+                        <p>Reach a 5 win streak</p>
+                    </div>
+                </div>
+
+                <div class="achievement locked" id="achievement-10">
+                    <div class="achievement-icon">🎯</div>
+                    <div>
+                        <strong>Veteran</strong>
+                        <p>Play 10 games</p>
+                    </div>
+                </div>
+
+                <div class="achievement locked" id="achievement-perfect">
+                    <div class="achievement-icon">👑</div>
+                    <div>
+                        <strong>Perfect Run</strong>
+                        <p>Win 5 games in a row</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Match History -->
+        <section class="panel">
+
+            <div class="panel-header">
+                <div>
+                    <span class="section-label">📜 MATCH HISTORY</span>
+                    <h2>Recent battles</h2>
+                </div>
+
+                <button class="clear-btn" id="clearHistory">
+                    Clear
+                </button>
+            </div>
+
+            <div class="history" id="history">
+                <div class="empty-history">
+                    <span>🎮</span>
+                    <p>No battles yet</p>
+                    <small>Your recent matches will appear here.</small>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Reset -->
+        <section class="reset-section">
+            <button class="reset-btn" id="resetBtn">
+                <span>↻</span>
+                RESET GAME
+            </button>
+        </section>
+
+    </main>
+
+
+    <!-- Winner Modal -->
+    <div class="modal-overlay" id="gameModal">
+
+        <div class="winner-modal">
+
+            <button class="close-modal" id="closeModal">×</button>
+
+            <div class="trophy">🏆</div>
+
+            <span>GAME OVER</span>
+
+            <h2 id="modalTitle">YOU WIN!</h2>
+
+            <p id="modalMessage">
+                Amazing performance!
+            </p>
+
+            <div class="final-score">
+                <div>
+                    <strong id="finalPlayerScore">0</strong>
+                    <span>YOU</span>
+                </div>
+
+                <div class="final-vs">—</div>
+
+                <div>
+                    <strong id="finalComputerScore">0</strong>
+                    <span>COMPUTER</span>
+                </div>
+            </div>
+
+            <button class="play-again" id="playAgain">
+                ⚡ PLAY AGAIN
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="toast" id="toast">
+        <span>🏅</span>
+        <p id="toastText">Achievement unlocked!</p>
+    </div>
+
+
+    <footer>
+        <p>🎮 RPS Arena</p>
+        <span>Built with HTML • CSS • JavaScript</span>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
